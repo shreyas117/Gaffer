@@ -30,11 +30,11 @@ jobs:
   
 
     - name: Maven Clean Install
-      run: mvn clean install -DskipTests -pl core -am
+      run: mvn clean install -DskipTests -pl core/graph -am
 
     - name: Run Maven Tests
-      run: mvn -pl core test -Dtest="ma.glasnost.orika.test.generator.ExpanderTestCase#testExpand"
+      run: mvn -pl core/graph test -Dtest="uk.gov.gchq.gaffer.graph.GraphSerialisableTest#shouldConsumeGraph"
 
     - name: Run Nondex Maven Plugin
-      run: mvn -pl core edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest="ma.glasnost.orika.test.generator.ExpanderTestCase#testExpand"
+      run: mvn -pl core/graph edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest="uk.gov.gchq.gaffer.graph.GraphSerialisableTest#shouldConsumeGraph"
 
