@@ -32,15 +32,17 @@ jobs:
     - name: Maven Clean Install
       run: mvn clean install -DskipTests -pl core/graph -am
 
+    - name: Run Maven Tests 2
+      run: mvn -pl core/graph test -Dtest="uk.gov.gchq.gaffer.graph.hook.UpdateViewHookTest#shouldMergeAndApplyWhiteList"
+
+    - name: Run Nondex Maven Plugin 2
+      run: mvn -pl core/graph edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest="uk.gov.gchq.gaffer.graph.hook.UpdateViewHookTest#shouldMergeAndApplyWhiteList"
+
     - name: Run Maven Tests 1
       run: mvn -pl core/graph test -Dtest="uk.gov.gchq.gaffer.graph.GraphSerialisableTest#shouldConsumeGraph"
 
     - name: Run Nondex Maven Plugin 1
       run: mvn -pl core/graph edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest="uk.gov.gchq.gaffer.graph.GraphSerialisableTest#shouldConsumeGraph"
 
-    - name: Run Maven Tests 2
-      run: mvn -pl core/graph test -Dtest="uk.gov.gchq.gaffer.graph.hook.UpdateViewHookTest#shouldMergeAndApplyWhiteList"
-
-    - name: Run Nondex Maven Plugin 2
-      run: mvn -pl core/graph edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest="uk.gov.gchq.gaffer.graph.hook.UpdateViewHookTest#shouldMergeAndApplyWhiteList"
+   
 
